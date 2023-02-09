@@ -1,25 +1,28 @@
 import {LitElement, html} from 'lit';
 
-export class NameTag extends LitElement {
+export class MoreExpressions extends LitElement {
   static properties = {
-    name: {},
+    checked: {},
   };
 
   constructor() {
     super();
-    this.name = '';
+    this.checked = false;
   }
 
   render() {
     return html`
-      <p>hola, ${this.name}</p>
-      <input @input=${this.changeName} placeholder="nombre">
+      <div>
+        <input type="text" ?disabled=${!this.checked} value="Mi nombre.">
+      </div>
+      <label><input type="checkbox" @change=${
+        this.setChecked
+      }> no soy un robot</label>
     `;
   }
 
-  changeName(event) {
-    const input = event.target;
-    this.name = input.value;
+  setChecked(event) {
+    this.checked = event.target.checked;
   }
 }
-customElements.define('name-tag', NameTag);
+customElements.define('more-expressions', MoreExpressions);
