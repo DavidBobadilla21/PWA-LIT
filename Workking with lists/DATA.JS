@@ -1,21 +1,22 @@
 import {LitElement, html} from 'lit';
-import {map} from 'lit/directives/map.js';
 
 class MyElement extends LitElement {
   static properties = {
-    items: {state: true},
+    names: {state: true},
   };
 
   constructor() {
     super();
-    this.items = new Set(['Manzana', 'platano', 'higo', 'naranja', 'limón','sandia']);
+    this.names = ['Chandler', 'Phoebe', 'Joey', 'Monica', 'Rachel', 'Ross'];
   }
 
   render() {
     return html`
-      <p>My unique fruits</p>
+      <p>Nombre de la lista que tenga la letra "o"</p>
       <ul>
-        ${map(this.items, (item) => html`<li>${item}</li>`)}
+      ${this.names
+        .filter((name) => name.match(/o/i))
+        .map((name) => html`<li>${name}</li>`)}
       </ul>
     `;
   }
