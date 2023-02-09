@@ -2,7 +2,7 @@ import {LitElement, html, svg, css} from 'lit';
 
 const themeCSS = css`
   .background {
-    fill: var(--background-color, #000000);
+    fill: var(--background-color, #0E0000);
   }
 
   text {
