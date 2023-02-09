@@ -1,9 +1,17 @@
 import {html, LitElement} from 'lit';
 
 class WordViewer extends LitElement {
+  static properties = {
+    words: {},
+  };
+
+  constructor() {
+    super();
+    this.words = 'initial value';
+  }
+
   render() {
-    return html`<pre>SOY DAVID BOBADILLA!</pre>`;
+    return html`<pre>${this.words}</pre>`;
   }
 }
 customElements.define('word-viewer', WordViewer);
-
