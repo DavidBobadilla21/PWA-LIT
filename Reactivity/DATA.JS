@@ -1,4 +1,3 @@
-
 import {LitElement, html} from 'lit';
 
 export class MyElement extends LitElement {
@@ -13,16 +12,16 @@ export class MyElement extends LitElement {
 
   flipCoin() {
     if (Math.random() < 0.5) {
-      this.result = 'verdad';
+      this.result = 'Heads';
     } else {
-      this.result = 'falso';
+      this.result = 'Tails';
     }
   }
 
   render() {
     return html`
       <button @click=${this.flipCoin}>Flip a coin!</button>
-      <p>resultado: ${this.result}</p>
+      <p>Result: ${this.result}</p>
     `;
   }
 }
