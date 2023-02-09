@@ -50,6 +50,18 @@ const createTile = () => svg`
   </g>
 `;
 
+const createRepeatPattern = () => svg`
+  <pattern
+    id="repeat-pattern"
+    x="-10"
+    y="-10"
+    width="200"
+    height="200"
+    patternUnits="userSpaceOnUse">
+    ${createTile()}
+  </pattern>
+`;
+
 export class RepeatPattern extends LitElement {
   static properties = {
     chars: {type: String},
@@ -62,7 +74,7 @@ export class RepeatPattern extends LitElement {
 
   constructor() {
     super();
-    this.chars = 'LHOLA';
+    this.chars = 'lit';
     this.numPrints = 7;
     this.rotationOffset = 0;
   }
@@ -74,10 +86,12 @@ export class RepeatPattern extends LitElement {
           ${createTileBoundary()}
           ${createElement(this.chars)}
           ${createMotif(this.numPrints, this.rotationOffset)}
+          ${createRepeatPattern()}
         </defs>
-            ${createTile()}
+    
+        <rect fill="#ffffff" height="100%" width="100%"></rect>
+        <rect fill="url(#repeat-pattern)" height="100%" width="100%"></rect>
       </svg>
     `;
   }
 }
-customElements.define('repeat-pattern', RepeatPattern);
