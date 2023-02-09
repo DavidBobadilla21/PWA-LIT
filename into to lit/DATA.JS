@@ -1,27 +1,45 @@
-import {LitElement, html} from 'lit';
+import {LitElement, html, css} from 'lit';
 
 export class ToDoList extends LitElement {
   static properties = {
     _listItems: {state: true},
   };
+  static styles = css`
+    .completed {
+      text-decoration-line: line-through;
+      color: #777;
+    }
+  `;
 
   constructor() {
     super();
     this._listItems = [
-      {text: 'realizar mi tarea', completed: true},
-      {text: 'terminar el reporte', completed: false},
+      {text: 'tarea de programación', completed: true},
+      {text: 'reporte', completed: true},
     ];
   }
 
   render() {
     return html`
-      <h2>lista de tareas por hacer</h2>
+      <h2>tareas a realizar</h2>
       <ul>
-        ${this._listItems.map((item) => html`<li>${item.text}</li>`)}
+        ${this._listItems.map(
+          (item) => html`
+            <li
+                class=${item.completed ? 'completed' : ''}
+                @click=${() => this.toggleCompleted(item)}>
+              ${item.text}
+            </li>`
+        )}
       </ul>
       <input id="newitem" aria-label="New item">
       <button @click=${this.addToDo}>Add</button>
     `;
+  }
+
+  toggleCompleted(item) {
+    item.completed = !item.completed;
+    this.requestUpdate();
   }
 
   get input() {
