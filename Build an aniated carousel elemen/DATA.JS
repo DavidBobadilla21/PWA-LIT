@@ -1,4 +1,3 @@
-
 import {LitElement, html} from 'lit';
 import {styles} from './styles.js';
 
@@ -8,10 +7,9 @@ export class MotionCarousel extends LitElement {
   render() {
     return html`
       <div class="fit">
-
+        <slot></slot>
       </div>
     `;
   }
 }
 customElements.define('motion-carousel', MotionCarousel);
-
