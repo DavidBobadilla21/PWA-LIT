@@ -1,4 +1,3 @@
-
 import {LitElement, html} from 'lit';
 
 export class DateDisplay extends LitElement {
