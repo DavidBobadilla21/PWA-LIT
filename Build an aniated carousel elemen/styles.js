@@ -25,6 +25,4 @@ export const styles = css`
     height: 100%;
   }`;
 
-
-
   
