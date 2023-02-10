@@ -19,10 +19,15 @@ export const styles = css`
     width: 100%;
   }
 
+  .selected {
+    top: -100%;
+  }
+
   ::slotted(*) {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
   }`;
+
 
   
